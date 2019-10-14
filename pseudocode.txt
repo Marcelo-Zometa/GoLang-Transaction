@@ -6,7 +6,7 @@ Pseudocode for transaction.go code.
         - Add an income
         - Get total outcomes
         - Add an outcomes 
-[]  Get user input choice
+[v]  Get user input choice
 []  Run menu on choice
         - Get total incomes: connect to database. 
                             Sum total from capital column in Income table. 

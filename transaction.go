@@ -11,6 +11,7 @@ func displayMenu() {
 	fmt.Println("[2]Add an income")
 	fmt.Println("[3]Get total outcomes")
 	fmt.Println("[4]Add an outcome")
+	fmt.Println("[5]Exit the program")
 }
 
 //Gets the user input for what to do in Menu
@@ -20,11 +21,28 @@ func getChoice() int {
 	return fmt.Scan(&num)	
 }
 
+func menu(choice int) bool {
+	
+	switch choie {
+	case 1:	//Get total incomes
+
+	case 2: //Add an income
+
+	case 3: //Get total outcomes
+
+	case 4: // Add an outcome
+
+	case 5: //Exit the program
+	}
+}
+
 //Driver function
 func main() {
 	var choice int
+	var runBack bool
 
 	displayMenu()
 	choice = getChoice()
-	fmt.Println(choice)
+	
+	runBack = menu(choice)
 }
