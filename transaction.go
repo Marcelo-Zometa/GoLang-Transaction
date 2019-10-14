@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	//"database/sql"
+	"database/sql"
+	"github.com/denisenkom/go-mssqldb"
 )
 
 //Displays menu options. 
@@ -28,6 +29,14 @@ func menu(choice int) bool {
 	
 	switch choice {
 		case 1:	//Get total incomes
+				conn, err := sql.Open("mssql", "server=snow-se-1@snow.edu;userid=F19MarceloZometa;password=SA_PASSWORD=Password1!;")
+				if err == nil {
+					fmt.Println("It worked!")
+				}
+				else
+				{
+					fmt.Println("Connection failed")
+				}
 
 		case 2: //Add an income
 
