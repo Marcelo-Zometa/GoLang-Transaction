@@ -1,0 +1,28 @@
+Pseudocode for transaction.go code.
+
+1. Greet the specific user from this code: Hello Marcelo. Welcome back. What is it going to be for today?
+2. display options: 
+    - Get total incomes
+    - Add an income
+    - Get total outcomes
+    - Add an outcomes
+3. Get user input choice
+4. Run menu on choice
+    - Get total incomes: connect to database. 
+                        Sum total from capital column in Income table. 
+                        Display answer
+    - Add an income: connect to database. 
+                    Get from user name of income
+                    Get from user the capital from income
+                    Write into Income table
+                    Display succesfully added.                
+    - Get total outcomes: connect to database. 
+                        Sum total from capital column in Outcome table. 
+                        Display answer
+    - Add an outcomes: connect to database. 
+                    Get from user name of income
+                    Get from user the capital from income
+                    Write into Income table
+                    Display succesfully added. 
+5. Clear screen
+6. Run again
