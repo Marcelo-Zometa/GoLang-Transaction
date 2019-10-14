@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	//"database/sql"
+)
 
 //Displays menu options. 
 func displayMenu() {
@@ -23,17 +26,20 @@ func getChoice() int {
 
 func menu(choice int) bool {
 	
-	switch choie {
-	case 1:	//Get total incomes
+	switch choice {
+		case 1:	//Get total incomes
 
-	case 2: //Add an income
+		case 2: //Add an income
 
-	case 3: //Get total outcomes
+		case 3: //Get total outcomes
 
-	case 4: // Add an outcome
+		case 4: // Add an outcome
 
-	case 5: //Exit the program
+		case 5: //Exit the program
+				return false
 	}
+
+	return true
 }
 
 //Driver function
