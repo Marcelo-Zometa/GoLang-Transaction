@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+//Displays menu options. 
 func displayMenu() {
 	fmt.Println("Greetings Marcelo\n")
 	fmt.Println("Welcome back to your Expense Tracker\n")
@@ -12,6 +13,18 @@ func displayMenu() {
 	fmt.Println("[4]Add an outcome")
 }
 
+//Gets the user input for what to do in Menu
+func getChoice() int {
+	var num int
+
+	return fmt.Scan(&num)	
+}
+
+//Driver function
 func main() {
+	var choice int
+
 	displayMenu()
+	choice = getChoice()
+	fmt.Println(choice)
 }
