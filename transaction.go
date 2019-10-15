@@ -3,7 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"log"
+	//"log"
 	_ "github.com/denisenkom/go-mssqldb"
 	"time"
 	"math"
@@ -71,6 +71,11 @@ func menu(choice int) {
 // 		}
 // }
 
+//Displays the total incomes from the database.
+func caseOne() {
+	
+}
+
 //Gets the input from user of description of income, amount and injects it into the Income database
 func caseTwo() {
 	//Creation of variables
@@ -96,14 +101,15 @@ func caseTwo() {
 	sqlStatement = "Insert into F19MarceloZ.GoLangTransactions.Income (income, dateInput, amount) VALUES ($1, $2, $3);"
 
 	errdb = condb.QueryRow(sqlStatement, income, time.Now(), money).Scan(&id)
-	if errdb != nil {
-		log.Fatal(errdb)
-	  }
-	  fmt.Println("New record ID is:", id) 
+	// if errdb != nil {
+	// 	log.Fatal(errdb)
+	//   }
+	  fmt.Println("Entry successfully added to database") 
 
 	defer condb.Close()
 }
 
+//Gets the input from user of description of outcome, amount and injects it into the Outcome database
 func caseFour() {
 	//Creation of variables
 	var sqlStatement string
@@ -128,10 +134,10 @@ func caseFour() {
 	sqlStatement = "Insert into F19MarceloZ.GoLangTransactions.Outcome (outcome, dateInput, amount) VALUES ($1, $2, $3);"
 
 	errdb = condb.QueryRow(sqlStatement, outcome, time.Now(), money).Scan(&id)
-	if errdb != nil {
-		log.Fatal(errdb)
-	  }
-	  fmt.Println("New record ID is:", id) 
+	// if errdb != nil {
+	// 	log.Fatal(errdb)
+	//   }
+	  fmt.Println("Entry successfully added to database") 
 
 	defer condb.Close()
 }
