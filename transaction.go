@@ -1,12 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"database/sql"
-	"github.com/denisenkom/go-mssqldb"
+	"fmt"
 	"log"
-)
-
+	_ "github.com/denisenkom/go-mssqldb"
+  )
 //Displays menu options. 
 // func displayMenu() {
 // 	fmt.Println("Greetings Marcelo\n")
@@ -62,23 +61,24 @@ func main() {
 	
 	// runBack = menu(choice)
 
-	condb, errdb := sql.Open("mssql", "server=localhost;user id=sa;password=SA_PASSWORD=yourStrong(!)Password;")
+	condb, errdb := sql.Open("mssql", "server=snow-se-1.snow.edu;user id=F19MarceloZometa;password=Password1!;")
 	if errdb != nil {
 		fmt.Println(" Error open db:", errdb.Error())
-	}
-	var (
+	  }
+	  var (
 		sqlversion string
-	)
-	rows, err := condb.Query("select @@version")
-	if err != nil {
+	  )
+	  rows, err := condb.Query("select @@version")
+	  if err != nil {
 		log.Fatal(err)
-	}
-	for rows.Next() {
+	  }
+	  for rows.Next() {
 		err := rows.Scan(&sqlversion)
 		if err != nil {
-		log.Fatal(err)
+		  log.Fatal(err)
 		}
 		log.Println(sqlversion)
-	}
-	defer condb.Close()
+	  }
+	  defer condb.Close()
+	
 }
