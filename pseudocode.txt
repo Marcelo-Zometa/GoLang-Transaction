@@ -13,7 +13,7 @@ Pseudocode for transaction.go code.
                             Display answer
         - Add an income: connect to database. 
                         Get from user name of income
-                        Get from user the capital from income
+                        Get from user the capital from income. Truncate to 2 decimal places
                         Write into Income table
                         Display succesfully added.                
         - Get total outcomes: connect to database. 
