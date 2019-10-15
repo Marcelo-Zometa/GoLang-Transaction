@@ -3,7 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	//"log"
+	"log"
 	_ "github.com/denisenkom/go-mssqldb"
 	"time"
 	"math"
@@ -49,7 +49,8 @@ func menu(choice int) {
 	
 	switch choice {
 		case 1:	//Get total incomes
-				//caseOne()
+				caseOne()
+				break
 		case 2: //Add an income
 				caseTwo()
 				break
@@ -73,7 +74,36 @@ func menu(choice int) {
 
 //Displays the total incomes from the database.
 func caseOne() {
-	
+	var total float64
+
+	//Creating connection
+	condb, errdb := sql.Open("mssql", "server=snow-se-1.snow.edu;user id=F19MarceloZometa;password=Password1!;")
+		if errdb != nil {
+			fmt.Println(" Error open db:", errdb.Error())
+		}
+
+	rows, err := condb.Query("select sum(i.amount) from f19MarceloZ.GoLangTransactions.Income i")
+	if err != nil{
+		log.Fatal(err)
+	} 
+	defer rows.Close()
+
+	for rows.Next(){
+		err := rows.Scan(&total)
+
+		if err != nil{
+			log.Fatal(err)
+		}
+		
+		fmt.Println("Total income: ", total)
+	}
+
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer condb.Close()
 }
 
 //Gets the input from user of description of income, amount and injects it into the Income database
