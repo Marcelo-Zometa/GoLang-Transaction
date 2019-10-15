@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-Pseudocode for transaction.go code.
-
-[v] Greet the specific user from this code: Hello Marcelo. Welcome back. What is it going to be for today?
-    display options: 
-        - Get total incomes
-        - Add an income
-        - Get total outcomes
-        - Add an outcomes 
-[v]  Get user input choice
-[]  Run menu on choice
-        - Get total incomes: connect to database. 
-                            Sum total from capital column in Income table. 
-                            Display answer
-        - Add an income: connect to database. 
-                        Get from user name of income
-                        Get from user the capital from income
-                        Write into Income table
-                        Display succesfully added.                
-        - Get total outcomes: connect to database. 
-                            Sum total from capital column in Outcome table. 
-                            Display answer
-        - Add an outcomes: connect to database. 
-                        Get from user name of income
-                        Get from user the capital from income
-                        Write into Income table
-                        Display succesfully added. 
-[]  Clear screen
-[]  Run again
-=======
 Pseudocode for transaction.go code.
 
 [v] Greet the specific user from this code: Hello Marcelo. Welcome back. What is it going to be for today?
@@ -59,4 +29,3 @@ Pseudocode for transaction.go code.
 
 Useful links
         https://mathaywardhill.com/2017/04/27/get-started-with-golang-and-sql-server-in-visual-studio-code/
->>>>>>> 4b4248c99a9ec53c695a5607c567f100eccebb7e
