@@ -74,6 +74,7 @@ func menu(choice int) {
 
 //Displays the total incomes from the database.
 func caseOne() {
+	//Creating functions
 	var total float64
 
 	//Creating connection
@@ -82,12 +83,14 @@ func caseOne() {
 			fmt.Println(" Error open db:", errdb.Error())
 		}
 
+	//Querying the database
 	rows, err := condb.Query("select sum(i.amount) from f19MarceloZ.GoLangTransactions.Income i")
 	if err != nil{
 		log.Fatal(err)
 	} 
 	defer rows.Close()
 
+	//Getting data from database and printing it
 	for rows.Next(){
 		err := rows.Scan(&total)
 
@@ -98,6 +101,7 @@ func caseOne() {
 		fmt.Println("Total income: ", total)
 	}
 
+	//Closing connection
 	err = rows.Err()
 	if err != nil {
 		log.Fatal(err)
