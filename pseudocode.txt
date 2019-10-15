@@ -26,3 +26,6 @@ Pseudocode for transaction.go code.
                         Display succesfully added. 
 []  Clear screen
 []  Run again
+
+Useful links
+        https://mathaywardhill.com/2017/04/27/get-started-with-golang-and-sql-server-in-visual-studio-code/
