@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"database/sql"
-	"github.com/denisenkom/go-mssqldb"
+	//"github.com/denisenkom/go-mssqldb"
 )
 
 //Displays menu options. 
@@ -22,7 +22,8 @@ func displayMenu() {
 func getChoice() int {
 	var num int
 
-	return fmt.Scan(&num)	
+	fmt.Scan(&num)	
+	return num
 }
 
 func menu(choice int) bool {
@@ -32,9 +33,7 @@ func menu(choice int) bool {
 				conn, err := sql.Open("mssql", "server=snow-se-1@snow.edu;userid=F19MarceloZometa;password=SA_PASSWORD=Password1!;")
 				if err == nil {
 					fmt.Println("It worked!")
-				}
-				else
-				{
+				} else {
 					fmt.Println("Connection failed")
 				}
 
@@ -54,10 +53,18 @@ func menu(choice int) bool {
 //Driver function
 func main() {
 	var choice int
-	var runBack bool
+	//var runBack bool
+
+	conn, err := sql.Open("mssql", "server=snow-se-1@snow.edu;userid=F19MarceloZometa;password=SA_PASSWORD=Password1!;")
+				if err == nil {
+					fmt.Println("It worked!")
+				} else {
+					fmt.Println("Connection failed")
+				}
 
 	displayMenu()
 	choice = getChoice()
 	
-	runBack = menu(choice)
+	// runBack = menu(choice)
+	menu(choice)
 }
