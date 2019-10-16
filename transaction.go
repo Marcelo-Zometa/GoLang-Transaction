@@ -48,32 +48,39 @@ func getString() string {
 func menu(choice int) {
 	
 	switch choice {
-		case 1:	//Get total incomes
-				caseOne()
+		case 1:	//Get your balance
+				balance()
+				break			
+		case 2: //Get total incomes
+				totalIncome()
 				break
-		case 2: //Add an income
-				caseTwo()
+		case 3: //Add an income
+				addIncome()
 				break
-		case 3: //Get total outcomes
-
-		case 4: // Add an outcome
-				caseFour()
+		case 4: //Get total outcomes
+				totalOutcome()
 				break
-		case 5: //Exit the program
-				fmt.Println("Thanks for using your Expense Tracker. Come again soon!")
+		case 5: // Add an outcome
+		 		caseFour()//Exit the program
+				break
+		case 6:	fmt.Println("Thanks for using your Expense Tracker. Come again soon!") //Exit the program
 				os.Exit(0)
 	}
 }
 
-// func caseOne() {
-// 	condb, errdb := sql.Open("mssql", "server=snow-se-1.snow.edu;user id=F19MarceloZometa;password=Password1!;")
-// 		if errdb != nil {
-// 			fmt.Println(" Error open db:", errdb.Error())
-// 		}
-// }
+//Subtracts the total income minus the total outcome
+func balance() {
+	// var _income float64
+	// var _outcome float64
+
+	_income := totalIncome()
+	_outcome := totalOutcome()
+	
+	fmt.Println("Your current balance is ", (_income - _outcome))
+}
 
 //Displays the total incomes from the database.
-func caseOne() {
+func totalIncome() float64 {
 	//Creating functions
 	var total float64
 
@@ -108,10 +115,12 @@ func caseOne() {
 	}
 
 	defer condb.Close()
+
+	return total
 }
 
 //Gets the input from user of description of income, amount and injects it into the Income database
-func caseTwo() {
+func addIncome() {
 	//Creation of variables
 	var sqlStatement string
 	var money float64
@@ -141,6 +150,46 @@ func caseTwo() {
 	  fmt.Println("Entry successfully added to database") 
 
 	defer condb.Close()
+}
+
+//Displays the total outcome from the database.
+func totalOutcome() float64 {
+	//Creating functions
+	var total float64
+
+	//Creating connection
+	condb, errdb := sql.Open("mssql", "server=snow-se-1.snow.edu;user id=F19MarceloZometa;password=Password1!;")
+		if errdb != nil {
+			fmt.Println(" Error open db:", errdb.Error())
+		}
+
+	//Querying the database
+	rows, err := condb.Query("select sum(i.amount) from f19MarceloZ.GoLangTransactions.Outcome i")
+	if err != nil{
+		log.Fatal(err)
+	} 
+	defer rows.Close()
+
+	//Getting data from database and printing it
+	for rows.Next(){
+		err := rows.Scan(&total)
+
+		if err != nil{
+			log.Fatal(err)
+		}
+		
+		fmt.Println("Total outcome: ", total)
+	}
+
+	//Closing connection
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer condb.Close()
+
+	return total
 }
 
 //Gets the input from user of description of outcome, amount and injects it into the Outcome database
@@ -180,11 +229,10 @@ func caseFour() {
 func main() {
 	var choice int
 	
+	//WARNING: infinite loop. I only do this because you can exit the program in the menu.
 	for {
 		displayMenu()
-		choice = getInt()
-		
-		menu(choice)
-		//runBack = menu(choice)
+		choice = getInt()		
+		menu(choice)	
 	}	
 }
