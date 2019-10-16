@@ -10,16 +10,23 @@ import (
 	"os"
 	"bufio"
   )
+
+func division() {
+	fmt.Println("\n\n************************************************************************")
+	fmt.Println("************************************************************************\n\n")
+}
 //Displays menu options. 
 func displayMenu() {
+	division()
 	fmt.Println("Greetings Marcelo\n")
 	fmt.Println("Welcome back to your Expense Tracker\n")
 	fmt.Println("What is it going to be for today?")
-	fmt.Println("[1]Get total incomes")
-	fmt.Println("[2]Add an income")
-	fmt.Println("[3]Get total outcomes")
-	fmt.Println("[4]Add an outcome")
-	fmt.Println("[5]Exit the program")
+	fmt.Println("[1]Account balance")
+	fmt.Println("[2]Get total incomes")
+	fmt.Println("[3]Add an income")
+	fmt.Println("[4]Get total outcomes")
+	fmt.Println("[5]Add an outcome")
+	fmt.Println("[6]Exit the program")
 }
 
 //Gets the user input of int
@@ -50,20 +57,26 @@ func menu(choice int) {
 	switch choice {
 		case 1:	//Get your balance
 				balance()
+				division()
 				break			
 		case 2: //Get total incomes
 				totalIncome()
+				division()
 				break
 		case 3: //Add an income
 				addIncome()
+				division()
 				break
 		case 4: //Get total outcomes
 				totalOutcome()
+				division()
 				break
 		case 5: // Add an outcome
-		 		caseFour()//Exit the program
+				 addOutcome()
+				 division()
 				break
 		case 6:	fmt.Println("Thanks for using your Expense Tracker. Come again soon!") //Exit the program
+				division()
 				os.Exit(0)
 	}
 }
@@ -193,7 +206,7 @@ func totalOutcome() float64 {
 }
 
 //Gets the input from user of description of outcome, amount and injects it into the Outcome database
-func caseFour() {
+func addOutcome() {
 	//Creation of variables
 	var sqlStatement string
 	var money float64
@@ -229,10 +242,12 @@ func caseFour() {
 func main() {
 	var choice int
 	
+
+	
 	//WARNING: infinite loop. I only do this because you can exit the program in the menu.
 	for {
 		displayMenu()
 		choice = getInt()		
-		menu(choice)	
+		menu(choice)
 	}	
 }
